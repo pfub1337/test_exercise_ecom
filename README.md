@@ -9,7 +9,7 @@
 
 ## Запуск кода
 
-1. Установить Python 3.11.4
+1. Установить Python 3.11
 2. Установить `pipenv`
     
     `pip install pipenv`
