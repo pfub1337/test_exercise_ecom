@@ -1,0 +1,96 @@
+{
+    "correct": [
+        {
+            "lead_phone": "+7 999 123 45 67"
+        },
+        {
+            "lead_email": "email@example.com"
+        },
+        {
+            "creation_date": "2023-11-14"
+        },
+        {
+            "creation_date": "14.11.2023"
+        },
+        {
+            "description": "Here is some text..."
+        },
+        {
+            "lead_phone": "+7 999 123 45 67",
+            "lead_email": "email@example.com"
+        },
+        {
+            "lead_phone": "+7 999 123 45 67",
+            "creation_date": "2023-11-14"
+        },
+        {
+            "lead_phone": "+7 999 123 45 67",
+            "description": "Here is some text..."
+        },
+        {
+            "creation_date": "14.11.2023",
+            "description": "Here is some text..."
+        },
+        {
+            "lead_phone": "+7 999 123 45 67",
+            "lead_email": "email@example.com",
+            "creation_date": "14.11.2023",
+            "description": "Here is some text..."
+        }
+    ],
+    "incorrect": [
+        {
+            "lead_phone": "+89991234567"
+        },
+        {
+            "lead_phone": "89991234567"
+        },
+        {
+            "lead_phone": "89999991234567"
+        },
+        {
+            "lead_phone": "+7-999-123-45-67"
+        },
+        {
+            "lead_phone": "+89991234567"
+        },
+        {
+            "lead_email": "email@example.com"
+        },
+        {
+            "lead_email": "email@@@example.com"
+        },
+        {
+            "lead_email": "email@example-com"
+        },
+        {
+            "creation_date": "2023.11.14"
+        },
+        {
+            "creation_date": "14-11-2023"
+        },
+
+        {
+            "lead_phone": "+7-999-123-45-67",
+            "lead_email": "email@example.com"
+        },
+        {
+            "lead_phone": "+79991234567",
+            "creation_date": "2023.11.14"
+        },
+        {
+            "lead_phone": "89999991234567",
+            "description": "Here is some text..."
+        },
+        {
+            "creation_date": "14-11-2023",
+            "description": "Here is some text..."
+        },
+        {
+            "lead_phone": "+79991234567",
+            "lead_email": "email@example-com",
+            "creation_date": "14.11.2023",
+            "description": "Here is some text..."
+        }
+    ]
+}

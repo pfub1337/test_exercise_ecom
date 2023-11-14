@@ -44,7 +44,7 @@ def get_data_type(value):
                 return 'date'
             elif int(date[1]) % 2 == 0 and int(date[0]) <= 31:
                 return 'date'
-    if re.fullmatch(r'^\+7[0-9]{10}$', value):
+    if re.fullmatch(r'^\+7\s[0-9]{3}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}$', value):
         return 'phone'
     if re.fullmatch(r'^[a-zA-Z0-9.\+-_]{1,}@[a-zA-Z0-9.]{1,}$', value):
         return 'email'
