@@ -17,13 +17,6 @@
             "lead_phone": "phone",
             "creation_date": "date",
             "description": "text"
-        },
-        "4": {
-            "name": "Lead Info Mixed",
-            "lead_email": "phone",
-            "lead_phone": "date",
-            "creation_date": "text",
-            "description": "email"
         }
     }
 }

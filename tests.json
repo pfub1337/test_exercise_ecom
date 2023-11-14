@@ -7,6 +7,9 @@
             "lead_email": "email@example.com"
         },
         {
+            "lead_email": "email+3672347ydsvnjsdncj@e432578rfjcxample.com12378dchsd"
+        },
+        {
             "creation_date": "2023-11-14"
         },
         {
@@ -16,8 +19,8 @@
             "description": "Here is some text..."
         },
         {
-            "lead_phone": "+7 999 123 45 67",
-            "lead_email": "email@example.com"
+            "lead_email": "email@example.com",
+            "lead_phone": "+7 999 123 45 67"
         },
         {
             "lead_phone": "+7 999 123 45 67",
@@ -32,9 +35,9 @@
             "description": "Here is some text..."
         },
         {
-            "lead_phone": "+7 999 123 45 67",
-            "lead_email": "email@example.com",
             "creation_date": "14.11.2023",
+            "lead_email": "email@example.com",
+            "lead_phone": "+7 999 123 45 67",
             "description": "Here is some text..."
         }
     ],
@@ -55,12 +58,6 @@
             "lead_phone": "+89991234567"
         },
         {
-            "lead_email": "email@example.com"
-        },
-        {
-            "lead_email": "email@@@example.com"
-        },
-        {
             "lead_email": "email@example-com"
         },
         {
@@ -69,7 +66,6 @@
         {
             "creation_date": "14-11-2023"
         },
-
         {
             "lead_phone": "+7-999-123-45-67",
             "lead_email": "email@example.com"

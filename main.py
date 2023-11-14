@@ -12,7 +12,7 @@ DATA_TYPES = ['date', 'email', 'phone', 'text']
 
 
 def get_data_type(value):
-    if re.fullmatch(r'^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$', value):
+    if re.fullmatch(r'^[0-9]{4}\-[0-1][0-9]\-[0-3][0-9]$', value):
         date = value.split('-')
         if int(date[1]) <= 7:
             if int(date[1]) % 2 == 1 and int(date[2]) <= 31:
@@ -23,12 +23,12 @@ def get_data_type(value):
                 return 'date'
             elif int(date[1]) % 2 == 0 and int(date[2]) <= 30:
                 return 'date'
-        elif int(date[1] > 7) and int(date[1]) <= 12:
+        elif int(date[1]) > 7 and int(date[1]) <= 12:
             if int(date[1]) % 2 == 1 and int(date[2]) <= 30:
                 return 'date'
             elif int(date[1]) % 2 == 0 and int(date[2]) <= 31:
                 return 'date'
-    if re.fullmatch(r'^[0-3][0-9].[0-1][0-9].[0-9]{4}$', value):
+    if re.fullmatch(r'^[0-3][0-9]\.[0-1][0-9]\.[0-9]{4}$', value):
         date = value.split('.')
         if int(date[1]) <= 7:
             if int(date[1]) % 2 == 1 and int(date[0]) <= 31:
@@ -39,14 +39,14 @@ def get_data_type(value):
                 return 'date'
             elif int(date[1]) % 2 == 0 and int(date[0]) <= 30:
                 return 'date'
-        elif int(date[1] > 7) and int(date[1]) <= 12:
+        elif int(date[1]) > 7 and int(date[1]) <= 12:
             if int(date[1]) % 2 == 1 and int(date[0]) <= 30:
                 return 'date'
             elif int(date[1]) % 2 == 0 and int(date[0]) <= 31:
                 return 'date'
     if re.fullmatch(r'^\+7\s[0-9]{3}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}$', value):
         return 'phone'
-    if re.fullmatch(r'^[a-zA-Z0-9.\+-_]{1,}@[a-zA-Z0-9.]{1,}$', value):
+    if re.fullmatch(r'^[a-zA-Z0-9\.\+-_]{1,}@{1}[a-zA-Z0-9]{1,}\.[a-zA-Z0-9]{1,}$', value):
         return 'email'
     return 'text'
 
@@ -55,16 +55,24 @@ def search(data, response):
     res = []
     db_types = []
     response_types = [(k, get_data_type(v)) for k, v in response.items()]
+    # print(response_types)
     fields = list(response.keys())
     for row in data:
         if set(row.keys()).intersection(fields) == set(fields):
             db_types = [(k, v) for k, v in row.items() if k in fields]
-            if response_types == db_types:
+            if set(response_types) == set(db_types):
                 res.append({"name": row["name"]})
             # types = [(k, v) for k, v in row.items() if k in fields]
     if not res:
         return {k: v for k, v in response_types}
     return res
+
+
+# def create_app():
+#     app = Flask(__name__)
+#     db = TinyDB(f"{__name__.strip('_')}.json")
+#     app = Flask(__name__)
+#     return app
 
 
 @app.route('/create_form', methods=['POST'])
