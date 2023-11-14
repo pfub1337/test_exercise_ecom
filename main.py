@@ -1,17 +1,17 @@
-from tinydb import TinyDB, Query, where
+from tinydb import TinyDB, Query
 from flask import Flask, jsonify, request
 import re
 
 
 app = Flask(__name__)
-db = TinyDB(f"{__name__}.json")
+db = TinyDB(f"{__name__.strip('_')}.json")
 Form = Query()
+
 
 DATA_TYPES = ['date', 'email', 'phone', 'text']
 
 
 def get_data_type(value):
-    print(value)
     if re.fullmatch(r'^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$', value):
         date = value.split('-')
         if int(date[1]) <= 7:
@@ -53,17 +53,17 @@ def get_data_type(value):
 
 def search(data, response):
     res = []
-    types = []
+    db_types = []
     response_types = [(k, get_data_type(v)) for k, v in response.items()]
-    fields = response.keys()
-    # for k, v in response.items():
-    #     types.append()
+    fields = list(response.keys())
     for row in data:
-        if list(set(row.keys()).intersection(fields)) == fields:
-            types = [(k, v) for k, v in row.items() if k in fields]
-            res.append({"name": row["name"]})
+        if set(row.keys()).intersection(fields) == set(fields):
+            db_types = [(k, v) for k, v in row.items() if k in fields]
+            if response_types == db_types:
+                res.append({"name": row["name"]})
             # types = [(k, v) for k, v in row.items() if k in fields]
-    print(types, '\n', response_types)
+    if not res:
+        return {k: v for k, v in response_types}
     return res
 
 
@@ -91,20 +91,9 @@ def get_form():
         args.append(val)
     
     data = db.all()
-    print(request.form)
     res = search(data, request.form)
-
-    print(res)
     return res
 
 
-
-
-# def main():
-#     db_name = "forms.json"
-#     db = TinyDB(db_name)
-#     db.insert({'type': 'peach', 'count': 3})
-
-
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    app.run()

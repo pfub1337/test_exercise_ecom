@@ -1,1 +1,29 @@
-{"_default": {"1": {"name": "Lead Info Basic", "lead_email": "email", "lead_phone": "phone"}, "2": {"name": "Lead Info Extended", "lead_email": "email", "lead_phone": "phone", "creation_date": "date"}, "3": {"name": "Lead Info Maximum", "lead_email": "email", "lead_phone": "phone", "creation_date": "date", "description": "text"}}}
+{
+    "_default": {
+        "1": {
+            "name": "Lead Info Basic",
+            "lead_email": "email",
+            "lead_phone": "phone"
+        },
+        "2": {
+            "name": "Lead Info Extended",
+            "lead_email": "email",
+            "lead_phone": "phone",
+            "creation_date": "date"
+        },
+        "3": {
+            "name": "Lead Info Maximum",
+            "lead_email": "email",
+            "lead_phone": "phone",
+            "creation_date": "date",
+            "description": "text"
+        },
+        "4": {
+            "name": "Lead Info Mixed",
+            "lead_email": "phone",
+            "lead_phone": "date",
+            "creation_date": "text",
+            "description": "email"
+        }
+    }
+}
