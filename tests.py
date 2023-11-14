@@ -1,7 +1,4 @@
-import os
-import pytest
 import json
-import requests
 import unittest
 
 from main import app, db

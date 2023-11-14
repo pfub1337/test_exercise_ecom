@@ -1,5 +1,5 @@
 from tinydb import TinyDB, Query
-from flask import Flask, jsonify, request
+from flask import Flask, request
 import re
 
 
@@ -52,27 +52,14 @@ def get_data_type(value):
 
 
 def search(data, response):
-    res = []
-    db_types = []
     response_types = [(k, get_data_type(v)) for k, v in response.items()]
-    # print(response_types)
     fields = list(response.keys())
     for row in data:
         if set(row.keys()).intersection(fields) == set(fields):
             db_types = [(k, v) for k, v in row.items() if k in fields]
             if set(response_types) == set(db_types):
-                res.append({"name": row["name"]})
-            # types = [(k, v) for k, v in row.items() if k in fields]
-    if not res:
-        return {k: v for k, v in response_types}
-    return res
-
-
-# def create_app():
-#     app = Flask(__name__)
-#     db = TinyDB(f"{__name__.strip('_')}.json")
-#     app = Flask(__name__)
-#     return app
+                return {"name": row["name"]}
+    return {k: v for k, v in response_types}
 
 
 @app.route('/create_form', methods=['POST'])
@@ -90,13 +77,8 @@ def create_form():
 
 @app.route('/get_form', methods=['POST'])
 def get_form():
-    args = []
-
     if not request.form:
         return "No data in request"
-    
-    for val in request.form:
-        args.append(val)
     
     data = db.all()
     res = search(data, request.form)
