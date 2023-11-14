@@ -11,7 +11,17 @@ Form = Query()
 DATA_TYPES = ['date', 'email', 'phone', 'text']
 
 
-def get_data_type(value):
+def get_data_type(value: str):
+    '''
+    get_data_type(): function
+
+    Parameters:
+    - value: string
+
+    Output:
+    - data type: date, emaol, phone or text
+    '''
+    
     if re.fullmatch(r'^[0-9]{4}\-[0-1][0-9]\-[0-3][0-9]$', value):
         date = value.split('-')
         if int(date[1]) <= 7:
@@ -52,6 +62,16 @@ def get_data_type(value):
 
 
 def search(data, response):
+    '''
+    search(): function
+
+    Parameters:
+    - data: list of all DB records
+    - response: incoming data from POST request
+
+    Output:
+    form name if it was founded, else response values with data type
+    '''
     response_types = [(k, get_data_type(v)) for k, v in response.items()]
     fields = list(response.keys())
     for row in data:
